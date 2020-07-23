@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage ('Source code') {
+            steps{
+                sh 'rm -Rf *'
+                sh 'git clone  https://github.com/alilefe/terraform.git'
+            }
+        }
+        stage('Init') {
+            steps {
+                sh 'echo Inicializando terraform...'
+                sh 'pwd'
+                dir("$WORKSPACE/terraform"){
+               
+                sh '/home/alicia/terraform/entorno.sh'
+                 sh '''
+                echo "My client id is $AZURE_CLIENT_ID"
+                echo "My client secret is $AZURE_CLIENT_SECRET"
+                echo "My tenant id is $AZURE_TENANT_ID"
+                echo "My subscription id is $AZURE_SUBSCRIPTION_ID"
+                '''
+                sh 'terraform init'
+                sh 'terraform plan -out test.out'
+                sh 'terraform apply -auto-approve -input=test.out'
+                
+                }
+            }
+        }
+        
+    }
+}
