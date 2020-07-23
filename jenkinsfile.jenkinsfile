@@ -11,18 +11,18 @@ pipeline {
             steps {
                 sh 'echo Inicializando terraform...'
                 
-                withCredentials([azureServicePrincipal('azure_pruebas')]) {
+                 azureCLI commands: [[exportVariablesString: '', script: 'terraform init']], principalCredentialId: 'jenkins_azure'
+               
                 
                     
               
                  dir("$WORKSPACE/terraform"){
-                    sh 'pwd'
-                    sh 'terraform init' 
+ 
                     sh 'terraform plan -out test.out'
                     sh 'terraform apply -auto-approve -input=test.out'
                     }
                 
-                }
+                
             }
         }
         
