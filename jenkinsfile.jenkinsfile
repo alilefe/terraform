@@ -12,10 +12,11 @@ pipeline {
                 sh 'echo Inicializando terraform...'
                 
                dir("$WORKSPACE/terraform"){
+               withCredentials([azureServicePrincipal(credentialsId: "AZURE_LOGIN", clientIdVariable: "ARM_CLIENT_ID", clientSecretVariable: "ARM_CLIENT_SECRET", subscriptionIdVariable: "ARM_SUBSCRIPTION_ID", tenantIdVariable: "ARM_TENANT_ID")]) {
                
                  sh 'terraform init'
                
-                
+                }
                     
               
                  
