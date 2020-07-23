@@ -13,8 +13,7 @@ pipeline {
                 sh 'pwd'
                 dir("$WORKSPACE/terraform"){
               
-                    azureCLI commands: [[exportVariablesString: '', script: 'az vm list']], principalCredentialId: 'azure_pruebas'
-                    sh 'terraform init'
+                    azureCLI commands: [[exportVariablesString: '', script: 'terraform init']], principalCredentialId: 'azure_pruebas'
                     sh 'terraform plan -out test.out'
                     sh 'terraform apply -auto-approve -input=test.out'
                 
