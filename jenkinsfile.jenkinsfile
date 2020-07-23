@@ -12,7 +12,7 @@ pipeline {
                 sh 'echo Inicializando terraform...'
                 sh 'pwd'
                 dir("$WORKSPACE/terraform"){
-                    sh 'azureCLI principalCredentialId: 'azure_pruebas''
+                    azureCLI principalCredentialId: 'azure_pruebas'
                     sh 'terraform init'
                     sh 'terraform plan -out test.out'
                     sh 'terraform apply -auto-approve -input=test.out'
