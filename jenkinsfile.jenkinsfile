@@ -13,7 +13,7 @@ pipeline {
                 
                
               
-                 azureCLI commands: [[exportVariablesString: '', script: 'terraform init']], principalCredentialId: 'jenkins_azure'
+                 azureCLI commands: [[exportVariablesString: '', script: 'terraform init']], principalCredentialId: 'azure_pruebas'
                  dir("$WORKSPACE/terraform"){
                     sh 'pwd'
                     sh 'terraform init' 
