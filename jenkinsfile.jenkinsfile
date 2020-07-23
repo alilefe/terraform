@@ -12,17 +12,10 @@ pipeline {
                 sh 'echo Inicializando terraform...'
                 sh 'pwd'
                 dir("$WORKSPACE/terraform"){
-               
-                sh '/home/alicia/terraform/entorno.sh'
-                 sh '''
-                echo  $AZURE_CLIENT_ID
-                echo "My client secret is $AZURE_CLIENT_SECRET"
-                echo "My tenant id is $AZURE_TENANT_ID"
-                echo "My subscription id is $AZURE_SUBSCRIPTION_ID"
-                '''
-                sh 'terraform init'
-                sh 'terraform plan -out test.out'
-                sh 'terraform apply -auto-approve -input=test.out'
+                    sh 'azureCLI principalCredentialId: 'azure_pruebas''
+                    sh 'terraform init'
+                    sh 'terraform plan -out test.out'
+                    sh 'terraform apply -auto-approve -input=test.out'
                 
                 }
             }
