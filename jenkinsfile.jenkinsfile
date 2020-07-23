@@ -15,7 +15,7 @@ pipeline {
                
                 sh '/home/alicia/terraform/entorno.sh'
                  sh '''
-                echo "My client id is $AZURE_CLIENT_ID"
+                echo  $AZURE_CLIENT_ID
                 echo "My client secret is $AZURE_CLIENT_SECRET"
                 echo "My tenant id is $AZURE_TENANT_ID"
                 echo "My subscription id is $AZURE_SUBSCRIPTION_ID"
