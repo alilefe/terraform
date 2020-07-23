@@ -16,7 +16,7 @@ pipeline {
                
                  sh 'terraform init'
                  sh 'terraform plan -out prueba.out'
-                 sh 'terraform apply prueba.out -auto-approve'
+                 sh 'terraform apply -auto-approve prueba.out'
                
                 }
                     
