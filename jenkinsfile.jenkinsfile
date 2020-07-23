@@ -12,7 +12,7 @@ pipeline {
                 sh 'echo Inicializando terraform...'
                 
                dir("$WORKSPACE/terraform"){
-                 CredentialsId: $AZURE_LOGIN
+               
                  sh 'terraform init'
                
                 
