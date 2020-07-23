@@ -12,7 +12,7 @@ pipeline {
                 sh 'echo Inicializando terraform...'
                 
                dir("$WORKSPACE/terraform"){
-                 azureCLI commands: [[exportVariablesString: '', script: '']], principalCredentialId: '$AZURE_LOGIN'
+                 CredentialsId: $AZURE_LOGIN
                  sh 'terraform init'
                
                 
