@@ -13,10 +13,10 @@ pipeline {
                 
                
               
-                 azureCLI commands: [[exportVariablesString: '', script: 'terraform init']], principalCredentialId: 'jenkins_azure'
+                 azureCLI commands: [[exportVariablesString: '', script: '']], principalCredentialId: 'jenkins_azure'
                  dir("$WORKSPACE/terraform"){
                     sh 'pwd'
-                    sh 'terraform init' 
+                    sh 'terraform init -get=true' 
                     sh 'terraform plan -out test.out'
                     sh 'terraform apply -auto-approve -input=test.out'
                 
